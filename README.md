@@ -1,10 +1,14 @@
 # Web PPT Creator Skill
 
-这是一个用于创建和修改网页 PPT 的 Codex skill。它以 Reveal.js、HTML、CSS 和 JavaScript 交付可通过 HTTP 访问的 Web 演示文稿，并包含从源文档生成逐页 Markdown 大纲、内容设计、元素级动效以及渲染 QA 的完整要求。
+这是一个用于创建和修改网页 PPT 的 Codex skill。它以 Reveal.js、HTML、CSS 和 JavaScript 交付可通过静态 HTTP 服务独立运行的 Web 演示文稿。Skill 使用渐进式加载：入口文件负责模式选择和硬性边界，任务相关的完整规范存放在 `references/`。
 
 ## Skill
 
-- [`web-ppt-creator/SKILL.md`](web-ppt-creator/SKILL.md)：完整提示词与工作流
+- [`web-ppt-creator/SKILL.md`](web-ppt-creator/SKILL.md)：入口、模式路由与核心约束
+- [`web-ppt-creator/references/content-planning.md`](web-ppt-creator/references/content-planning.md)：内容权威与页面规划
+- [`web-ppt-creator/references/visual-design.md`](web-ppt-creator/references/visual-design.md)：叙事、视觉系统与动效
+- [`web-ppt-creator/references/implementation-delivery.md`](web-ppt-creator/references/implementation-delivery.md)：网页实现、静态构建与独立交付
+- [`web-ppt-creator/references/qa-and-revision.md`](web-ppt-creator/references/qa-and-revision.md)：渲染 QA、修改范围与完成标准
 - [`web-ppt-creator/agents/openai.yaml`](web-ppt-creator/agents/openai.yaml)：Codex UI 元数据与默认调用提示
 
 ## 使用方式
