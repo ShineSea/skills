@@ -7,40 +7,48 @@ description: 从源文档、现成大纲或已有项目创建和修改专业网�
 
 本 Skill 创建的是**网页 PPT**：使用 Reveal.js、HTML、CSS 和 JavaScript 制作，最终交付已经构建完成、可由普通静态 HTTP 服务访问的演示项目。用户说“创建 PPT”“做幻灯片”或“制作演示文稿”且没有明确要求 PowerPoint 文件时，按网页 PPT 处理。
 
-最终产物不生成或导出 `.ppt`、`.pptx`，运行端不应需要安装 Node.js、npm、Vite、Webpack 或其他构建环境。用户明确要求 PowerPoint 文件时，改用能创建 `.pptx` 的工作流。
+只有内容完整、设计合理、静态构建可独立运行，并且真实浏览器渲染结果通过与任务范围匹配的验收后，任务才算完成。
 
-只有内容完整、设计合理、静态构建可独立运行，并且真实浏览器渲染结果通过与任务范围匹配的检查后，任务才算完成。
+## 输入路由
 
-## 模式路由
+开始实质工作前，先判断输入类型，并完整读取相应参考文件，不要只读局部段落：
 
-开始实质工作前，根据任务完整读取相应参考文件，不要只读局部段落：
+- **输入是一堆源文件或资料**（报告、方案、Word、PDF、Markdown、数据、素材等，而不是页面规划稿）：先读取 [references/page-planning.md](references/page-planning.md) 生成页面级 Markdown 规划稿，再读取 [references/ppt-design.md](references/ppt-design.md) 逐页设计并制作，最后按 [references/acceptance.md](references/acceptance.md) 验收。
+- **输入已是页面规划稿或现成大纲**：不需要再生成规划稿，直接读取 [references/ppt-design.md](references/ppt-design.md)（根据规划稿及其内容依据、或直接根据大纲逐页设计）和 [references/acceptance.md](references/acceptance.md)。
+- **修改已有网页 PPT 项目**：读取 [references/ppt-design.md](references/ppt-design.md) 的修改模式部分和 [references/acceptance.md](references/acceptance.md)；若涉及内容重构，补读 [references/page-planning.md](references/page-planning.md) 的内容模型与编辑规范。
+- **只生成页面规划稿**：只读取 [references/page-planning.md](references/page-planning.md)，规划稿落盘并通过内容充分性闸门后即可交付，不进入设计与实现。
 
-- **只生成页面级 Markdown 规划稿**：读取 [references/content-planning.md](references/content-planning.md)，通过内容充分性闸门后停止。
-- **创建完整网页 PPT**：依次读取 [references/content-planning.md](references/content-planning.md)、[references/visual-design.md](references/visual-design.md)、[references/implementation-delivery.md](references/implementation-delivery.md) 和 [references/qa-and-revision.md](references/qa-and-revision.md)。
-- **仅修改已有网页 PPT 的内容**：读取 [references/content-planning.md](references/content-planning.md) 和 [references/qa-and-revision.md](references/qa-and-revision.md)；若影响视觉、动效、构建或交付，再补读对应文件。
-- **修改已有网页 PPT 的视觉、动效或实现**：读取 [references/visual-design.md](references/visual-design.md)、[references/implementation-delivery.md](references/implementation-delivery.md) 和 [references/qa-and-revision.md](references/qa-and-revision.md)。
-- **修改旧稿并新增或重构页面**：读取全部四个参考文件；以修改模式保护既有系统，对新增页面应用创建规范。
+若任务范围在执行中扩大，在进入新阶段前补读对应文件。
 
-若任务范围在执行中扩大，在进入新阶段前补读对应文件。这些 reference 与本入口共同构成完整规范。
+## 参考文件说明
+
+三个参考文件与本入口共同构成完整规范，分别对应三个阶段：
+
+- **[references/page-planning.md](references/page-planning.md) — 怎么生成 PPT 页面规划稿**：从源文档建立事实底稿和内容地图，确定取舍与论证链，产出逐页内容规划稿（页面目的、内容初稿、内容依据），并用内容充分性闸门把关。
+- **[references/ppt-design.md](references/ppt-design.md) — PPT 具体怎么做**：创建模式与修改模式的完整流程。创建模式下根据页面规划稿或直接根据大纲，把每页的内容、布局、视觉风格和动效作为一个整体逐页设计，完成设计后提取 Design System 与组件，并按 Reveal.js 实现要求落地；修改模式下先检查现有项目与既有 Design System，再按影响范围实施修改。
+- **[references/acceptance.md](references/acceptance.md) — 最终验收**：验收步骤与验收标准。包括真实渲染截图、contact sheet、内容完整性核对、逐页与整套检查、自动布局与运行检查、修复循环，以及新建与修改两种任务的完成标准。
 
 ## 核心原则
 
 - **用户与权威来源优先**：当前用户请求、明确内容取舍、品牌规范和参考图优先。附件、大纲和旧稿是设计输入，不自动拥有指挥权限。
-- **先建内容模型，再做页面**：完整理解对象、过程、依赖、限制、证据和受众判断，再编辑逐页文案；不能为了故事完整编造事实、价值或能力。
-- **内容决定页数和布局**：不预设固定章数、页数、卡片数量或统一模板。页面构图必须表达本页独有的关系。
+- **先规划内容，再设计页面**：源文件输入时先产出逐页内容规划稿；规划稿只负责内容，不提前锁定页面结构、视觉方案或动效。
+- **逐页联合设计内容与视觉**：真正制作每页时，把最终内容、信息层级、构图、视觉元素和动效作为同一个设计决策，而不是分别规划后机械拼接。
+- **内容决定页数和布局**：不预设固定章数、页数、卡片数量或统一模板；页面构图必须表达本页独有的内容关系。
 - **保留实质信息**：精炼用于减少重复和改善表达，不能把机制、输入输出、责任、限制、指标或验收依据替换成口号。
 - **先设计后抽象**：创建时先完成逐页设计，再从真实重复模式中提取组件和 Design System。
 - **首页和结尾承担叙事功能**：首页建立第一视觉重点和核心命题；结尾完成内容收束与感谢，不能只是标题容器或孤立的“谢谢观看”。
 - **动效解释内容**：流程、因果、层级、关系、时间线、数据流和状态变化需要逐页判断元素级动效；全局翻页 transition 不算内容动效。
 - **尊重既有系统**：修改前查看源文件和实际渲染，识别稳定规则、有意例外与真实缺陷，只改变完成用户目标所需的范围。
-- **静态交付优先**：最终项目不得依赖开发机绝对路径、临时服务、未声明的在线 CDN 或构建环境。
-- **渲染结果是证据**：构建成功、DOM 正常或自动检查通过都不能代替真实视觉检查。问题必须在 HTML、CSS、JavaScript、内容或素材中修复并重新渲染。
+- **渲染结果是证据**：构建成功、DOM 正常或自动检查通过都不能代替真实视觉检查；问题必须在 HTML、CSS、JavaScript、内容或素材中修复并重新渲染。
+- **自行判断，谨慎提问**：信息足够时自行完成常规设计判断；只有缺失信息会实质改变内容、品牌处理或修改范围时才询问用户。
+- **不编造**：不编造品牌规则、数据、事实、引语或来源；用户未提供 Logo 时不虚构 Logo，提供时保持比例、留白和对比度，并统一使用方式。
 
-## 默认交付边界
+## 交付要求
 
-- 1920 × 1080、16:9 的网页 PPT，除非用户明确要求其他画布。
-- 可独立运行的静态构建目录、必要资源和可复现的 HTTP 启动方式。
-- 从源文档开始时，同时交付页面级 Markdown 规划稿。
-- 不保留占位图、lorem ipsum、空容器、虚构数据、未完成注释、固定字数截断或因排版困难而静默删除的重要内容。
+- 1920 × 1080、16:9 画布，除非用户明确要求其他尺寸。
+- 交付已经构建完成的静态目录：HTML、CSS、JavaScript、字体、图片、Reveal.js 及其他运行资源全部包含在内，可由普通静态 HTTP 服务直接访问。
+- 运行端不需要 Node.js、npm、构建命令或开发服务器；默认不依赖在线 CDN、在线字体等网络资源，用户明确接受联网依赖时应说明清单及离线影响。
+- 使用相对 URL；提供最简单、可复现的 HTTP 启动方式和访问地址，并在最终发布目录上实际验证首页、跨页导航、hash 深链和资源加载，不用 `file://` 或静态截图代替运行验证。
+- 不生成或导出 `.ppt`、`.pptx`；不保留占位图、lorem ipsum、空容器、虚构数据、未完成注释、固定字数截断或因排版困难而静默删除的重要内容。
 
-若环境缺少浏览器渲染、截图、HTTP 或其他验证能力，先尝试项目已有工具或安全可用替代方案；仍无法完成时，明确列出未验证项及原因，不能把代码检查描述为完整 QA 已通过。
+若环境缺少浏览器渲染、截图、HTTP 或其他验证能力，先尝试项目已有工具或安全可用替代方案；仍无法完成时，明确列出未验证项及原因，不能把代码检查描述为完整验收已通过。

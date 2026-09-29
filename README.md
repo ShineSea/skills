@@ -4,11 +4,10 @@
 
 ## Skill
 
-- [`web-ppt-creator/SKILL.md`](web-ppt-creator/SKILL.md)：入口、模式路由与核心约束
-- [`web-ppt-creator/references/content-planning.md`](web-ppt-creator/references/content-planning.md)：内容权威与页面规划
-- [`web-ppt-creator/references/visual-design.md`](web-ppt-creator/references/visual-design.md)：叙事、视觉系统与动效
-- [`web-ppt-creator/references/implementation-delivery.md`](web-ppt-creator/references/implementation-delivery.md)：网页实现、静态构建与独立交付
-- [`web-ppt-creator/references/qa-and-revision.md`](web-ppt-creator/references/qa-and-revision.md)：渲染 QA、修改范围与完成标准
+- [`web-ppt-creator/SKILL.md`](web-ppt-creator/SKILL.md)：入口、输入路由、核心原则与交付要求
+- [`web-ppt-creator/references/page-planning.md`](web-ppt-creator/references/page-planning.md)：怎么生成 PPT 页面规划稿（事实底稿、内容地图、内容充分性闸门）
+- [`web-ppt-creator/references/ppt-design.md`](web-ppt-creator/references/ppt-design.md)：PPT 具体怎么做（创建/修改模式、逐页设计、Design System、动效、Reveal.js 实现）
+- [`web-ppt-creator/references/acceptance.md`](web-ppt-creator/references/acceptance.md)：最终验收（验收步骤与验收标准）
 - [`web-ppt-creator/agents/openai.yaml`](web-ppt-creator/agents/openai.yaml)：Codex UI 元数据与默认调用提示
 
 ## 使用方式
